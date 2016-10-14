@@ -30,5 +30,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekBarSatuation" />
+    <Button
+        android:onClick="resetDefault"
+        android:layout_width="match_parent"
+        android:layout_below="@id/seekBarLum"
+        android:layout_height="wrap_content" android:text="恢复默认"/>
 
 </RelativeLayout>
