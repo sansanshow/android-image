@@ -24,8 +24,9 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
+        android:onClick="colorMatrix"
         android:layout_height="wrap_content"
-        android:text="New Button" />
+        android:text="ColorMatrix" />
 
     <Button
         android:id="@+id/button3"

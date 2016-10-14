@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent primary = new Intent(this, PrimaryColorActivity.class);
         startActivity(primary);
     }
+    public void colorMatrix(View v) {
+        Intent matrix = new Intent(this, ColorMatrixActivity.class);
+        startActivity(matrix);
+    }
+
 }

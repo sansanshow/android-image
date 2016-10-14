@@ -18,17 +18,18 @@ import java.io.ByteArrayOutputStream;
 public class ImageHelper {
     /**
      * 图像特效处理
-     * @param bm 图像的Bitmap
-     * @param hue 色调
+     *
+     * @param bm         图像的Bitmap
+     * @param hue        色调
      * @param saturation 饱和度
-     * @param lum 亮度
+     * @param lum        亮度
      * @return 处理后的Bitmap
      */
     public static Bitmap handleImageEffect(Bitmap bm, float hue, float saturation, float lum) {
         System.out.println("ssssssss55555");
         Bitmap bitmap = Bitmap.createBitmap(bm.getWidth(), bm.getHeight(), Bitmap.Config.ARGB_8888); // Bitmap.Config.ARGB_8888 => 32位RGB位图
         Canvas canvas = new Canvas(bitmap);// ????
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);// 抗锯齿设置
 
         // *********************** 图像的调整--start **************************
         // 色调
@@ -59,6 +60,7 @@ public class ImageHelper {
 
     /**
      * 按照质量压缩
+     *
      * @param image
      * @return
      */
@@ -67,11 +69,11 @@ public class ImageHelper {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
         int options = 100;
-        while ( baos.toByteArray().length / 1024>100) {  //循环判断如果压缩后图片是否大于100kb,大于继续压缩
+        while (baos.toByteArray().length / 1024 > 100) {  //循环判断如果压缩后图片是否大于100kb,大于继续压缩
             baos.reset();//重置baos即清空baos
             image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
             options -= 10;//每次都减少10
-            if(options<0){
+            if (options < 0) {
                 options = 0;
                 break;
             }
@@ -83,9 +85,10 @@ public class ImageHelper {
 
     /**
      * 图片按比例大小压缩方法（根据路径获取图片并压缩）
+     *
      * @return
      */
-    public static Bitmap getimage(Resources resources,int id) {
+    public static Bitmap getimage(Resources resources, int id) {
         BitmapFactory.Options newOpts = new BitmapFactory.Options();
         //开始读入图片，此时把options.inJustDecodeBounds 设回true了
         newOpts.inJustDecodeBounds = true;
@@ -108,12 +111,13 @@ public class ImageHelper {
             be = 1;
         newOpts.inSampleSize = be;//设置缩放比例
         //重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
-        Bitmap bitmap = BitmapFactory.decodeResource(resources,id,newOpts);
+        Bitmap bitmap = BitmapFactory.decodeResource(resources, id, newOpts);
         return compressImage(bitmap);//压缩好比例大小后再进行质量压缩
     }
 
     /**
      * 图片按比例大小压缩方法（根据Bitmap图片压缩）
+     *
      * @param image
      * @return
      */
@@ -121,7 +125,7 @@ public class ImageHelper {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        if( baos.toByteArray().length / 1024>1024) {//判断如果图片大于1M,进行压缩避免在生成图片（BitmapFactory.decodeStream）时溢出
+        if (baos.toByteArray().length / 1024 > 1024) {//判断如果图片大于1M,进行压缩避免在生成图片（BitmapFactory.decodeStream）时溢出
             baos.reset();//重置baos即清空baos
             image.compress(Bitmap.CompressFormat.JPEG, 50, baos);//这里压缩50%，把压缩后的数据存放到baos中
         }
