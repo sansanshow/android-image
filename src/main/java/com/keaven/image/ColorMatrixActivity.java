@@ -60,9 +60,13 @@ public class ColorMatrixActivity extends Activity {
      * 从矩阵编辑框中获取值
      */
     private void getMatrix() {
+        System.out.println("------mColorMatrix------");
         for (int i = 0; i < 20; i++) {
             mColorMatrix[i] = Float.valueOf(mEts[i].getText().toString());
+            System.out.println("---" + i + "--" + mColorMatrix[i]);
         }
+
+
     }
 
     /**
@@ -71,12 +75,12 @@ public class ColorMatrixActivity extends Activity {
     private void setImageMatrix() {
         Bitmap bmp = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         ColorMatrix colorMatrix = new ColorMatrix();
-        colorMatrix.set(mColorMatrix);
+        colorMatrix.set(mColorMatrix);//颜色矩阵以数组的形式传递给ColorMatrix
         Canvas canvas = new Canvas(bmp);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);//设置抗锯齿
         paint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-        canvas.drawBitmap(bitmap, 0, 0, paint);
-        mImageView.setImageBitmap(bitmap);
+        canvas.drawBitmap(bitmap, 0, 0, paint);// 用画笔Paint 画笔重新画
+        mImageView.setImageBitmap(bmp);
     }
 
     /**
