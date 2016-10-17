@@ -3,34 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.keaven.image.MainActivity">
 
     <TextView
-        android:textSize="40sp"
-        android:layout_marginBottom="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="KK美图" />
+        android:layout_marginBottom="40dp"
+        android:text="KK美图"
+        android:textSize="40sp" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:onClick="primary"
         android:text="PRIMARY_COLOR" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:onClick="colorMatrix"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:onClick="colorMatrix"
         android:text="ColorMatrix" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button" />
+        android:layout_marginBottom="16dp"
+        android:onClick="doPixelsEffect"
+        android:text="PixelsEffect" />
 </LinearLayout>
