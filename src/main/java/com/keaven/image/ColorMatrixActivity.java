@@ -75,11 +75,11 @@ public class ColorMatrixActivity extends Activity {
     private void setImageMatrix() {
         Bitmap bmp = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         ColorMatrix colorMatrix = new ColorMatrix();
-        colorMatrix.set(mColorMatrix);//颜色矩阵以数组的形式传递给ColorMatrix
+        colorMatrix.set(mColorMatrix);/*颜色矩阵以数组的形式传递给ColorMatrix*/
         Canvas canvas = new Canvas(bmp);
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);//设置抗锯齿
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);/*设置抗锯齿*/
         paint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-        canvas.drawBitmap(bitmap, 0, 0, paint);// 用画笔Paint 画笔重新画
+        canvas.drawBitmap(bitmap, 0, 0, paint);/* 用画笔Paint 画笔重新画*/
         mImageView.setImageBitmap(bmp);
     }
 
