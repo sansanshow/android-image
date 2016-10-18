@@ -14,7 +14,7 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 
 /**
- * 图像矩阵案例
+ * 图像矩阵案例 修改后
  * Created by HX-MG01 on 2016/10/14.
  */
 public class ColorMatrixActivity extends Activity {
